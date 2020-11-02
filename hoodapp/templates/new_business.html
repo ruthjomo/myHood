@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 {% block content %}
 {{ block.super}}
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% load staticfiles%}
 
 
@@ -12,12 +12,12 @@
 
 
 
-<div class="card mx-auto" style="max-width:50rem; margin-top:50px;">
-  <form action="{%url 'add_biz'%}" method="post" enctype="multipart/form-data">
+<div class="card mx-auto" style="max-width:100rem; margin-top:50px; padding-left: 25%;border:2px lightskyblue">
+  <form action="{%url 'add_business'%}" method="post" enctype="multipart/form-data">
     {%csrf_token%}
 
     {% bootstrap_form form%}
-    <input type="submit" class="btn btn-success btn-lg" value="Add Business">
+    <input type="submit" class="btn btn-info btn-lg" value="Add Business">
   </form>
 </div>
 {% block scripts %}

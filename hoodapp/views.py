@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import Profile,Neighborhood,Business,Join,Post,
+from .models import Profile,Neighborhood,Business,Join,Post
 from .forms import NewProfileForm,AddBusinessForm,AddHoodForm,AddPostForm
 import datetime as dt
 from django.http import HttpResponse, Http404, HttpResponseRedirect
@@ -17,7 +17,7 @@ def homepage(request):
             hood = Neighborhood.objects.get(pk=request.user.join.hood_id.id)
             posts = Post.objects.filter(post_hood=request.user.join.hood_id.id)
             businesses = Business.objects.filter(
-                biz_hood=request.user.join.hood_id.id)
+                business_hood=request.user.join.hood_id.id)
             return render(request, 'current_hood.html', {"hood": hood, "businesses": businesses, "posts": posts})
         else:
             hoods = Neighborhood.all_neighborhoods()
@@ -36,7 +36,7 @@ def add_profile(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-        return redirect('homepage')
+        return redirect('home')
 
     else:
         form = NewProfileForm()
@@ -52,7 +52,7 @@ def add_hood(request):
             hood = form.save(commit=False)
             hood.user_profile = current_user
             hood.save()
-        return redirect('homepage')
+        return redirect('home')
 
     else:
         form = AddHoodForm()
@@ -63,16 +63,16 @@ def add_hood(request):
 def add_business(request):
     current_user = request.user
     if request.method == 'POST':
-        form = AddBizForm(request.POST, request.FILES)
+        form = AddBusinessForm(request.POST, request.FILES)
         if form.is_valid():
-            biz = form.save(commit=False)
-            biz.biz_owner = current_user
-            biz.biz_hood = request.user.join.hood_id
-            biz.save()
-        return redirect('homepage')
+            business = form.save(commit=False)
+            business.business_owner = current_user
+            business.business_hood = request.user.join.hood_id
+            business.save()
+        return redirect('home')
 
     else:
-        form = AddBizForm()
+        form = AddBusinessForm()
     return render(request, 'new_business.html', {"form": form})
 
 
@@ -89,18 +89,18 @@ def join_hood(request, hood_id):
 
         Join(user_id=request.user, hood_id=neighborhood).save()
 
-    return redirect('homepage')
+    return redirect('home')
 
 
 @login_required(login_url='/accounts/login/')
-def leave_hood(request, hood_id):
+def exit_hood(request, hood_id):
     '''
     This function will delete a neighbourhood instance in the join table
     '''
     if Join.objects.filter(user_id=request.user).exists():
         Join.objects.get(user_id=request.user).delete()
         # messages.error(request, 'You have left this awesome neighborhood ;-(')
-        return redirect('homepage')
+        return redirect('home')
 
 
 @login_required(login_url='/accounts/login/')
@@ -125,19 +125,11 @@ def add_post(request):
             post.poster = current_user
             post.post_hood = request.user.join.hood_id
             post.save()
-        return redirect('homepage')
+        return redirect('home')
 
     else:
         form = AddPostForm()
     return render(request, 'new_post.html', {"form": form})
-
-# def view_biz(request, biz_hood):
-#     current_user = request.user
-#     hood=Neighborhood.objects.get(id=biz_hood)
-#     businesses= Business.get_neighborhood_businesses(biz_hood = hood.id)
-
-#     return redirect (request, 'businesses.html', {"business":businesses})
-
 
 def search_results(request):
 

@@ -45,7 +45,7 @@ class Profile(models.Model):
 
 class Neighborhood(models.Model):
     locality = models.CharField(
-        max_length=30, default="e.g Nairobi,Thika,Ruiru etc")
+        max_length=30, default="")
     name = models.CharField(max_length=30)
     occupants_count = models.IntegerField(default=0, blank=True)
     # profile=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
@@ -109,12 +109,12 @@ class Business(models.Model):
 
     @classmethod
     def get_hood_business(cls, biz_hood):
-        businesses = Business.objects.filter(biz_hood_pk=biz_hood)
+        businesses = Business.objects.filter(business_hood_pk=biz_hood)
         return businesses
 
     @classmethod
     def get_profile_businesses(cls, profile):
-        businesses = Business.objects.filter(biz_owner__pk=profile)
+        businesses = Business.objects.filter(business_owner__pk=profile)
         return businesses
 
 

@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-{% load bootstrap4 %}
+{% load bootstrap3 %}
 {% block content %}
 {{ block.super}}
 {% load staticfiles %}
@@ -26,24 +26,24 @@
 
 <body>
     <div class="container-fluid">
-        <h1 id="mainheading" style="text-align:center;" class="display-4"> Watchtower</h1>
-        <h3>Hood: {{hood.name}}</h3>
-        <h4>Location: {{hood.locality}}</h4>
+        
+        <h1 style="text-align:center;">Businesses in {{hood.name}} </h1>
+        <hr>
+        <h2>Hood: {{hood.name}}</h2>
+        <h3>Location: {{hood.locality}}</h3>
 
-        <h5 id="text" class="card-title">Occupants: {{hood.occupants_count | upper}}</h5>
+        <h4 id="text" class="card-title">Occupants: {{hood.occupants_count | upper}}</h4>
 
         <div class="row">
 
-            <div class="col-md-3">
+            <div class="col-md-12">
                 <a href="{% url 'add_business'  %}" class="btn btn-sm btn-success">Add Business</a>
 
                 <a href="{% url 'add_post'  %}" class="btn btn-sm btn-success">Add Post</a>
                 <a href="{% url 'exit_hood' hood.id  %}" class="btn btn-sm btn-danger">Exit Hood</a>
             </div>
-            <div class="col-md-6">
-
-                <h2>Businesses in {{hood.name}} </h2>
-                <br>
+            <div class="col-md-12">
+            <br>
                 <div class="card-columns">
                     {% for business in businesses%}
                     <div class="card" style="width:100%;">
@@ -57,7 +57,7 @@
                     </div>
 
                     {% empty %}
-                    <h4>No businesses! Register one <a style="color:#4fc3f7;" href="{% url 'add_business'  %}">here</a></h4>
+                    <h5>No businesses! Register  <a style="color:#4fc3f7;" href="{% url 'add_business'  %}">here</a></h5>
 
                     {% endfor %}
 
@@ -65,25 +65,24 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
-
-
-                <a href="" class="btn btn-sm btn-success">Hood Posts</a>
+            
+<a href="" class="btn btn-sm btn-success" style="text-align:center;">Hood Posts</a>
                 <br> <br>
 
 
                 {% for post in posts%}
+                <div class="row">
                 <h3>{{post.name}}</h3>
                 <p id="text" style="margin-bottom:0;">By <a style="width:100%; padding-left:10px;" href="{% url 'user_profile' username=post.poster %}">
                         <label>{{post.poster}}</label></a></p>
 
                 {% empty %}
-                <h4>No posts :-(
+                <h5>No posts :-(
                     <br>
-                    <a style="color:#4fc3f7;" href="{% url 'add_post'  %}">Create one now!</a></h4>
+                    <a style="color:#4fc3f7;" href="{% url 'add_post'  %}">Create one now!</a></h5>
 
                 {% endfor %}
-
+                 </div>
             </div>
         </div>
     </div>
