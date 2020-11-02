@@ -31,10 +31,10 @@
                 <h5>{{business.name | upper}}</h5>
                 <h5>{{business.description | safe}}</h5>
                 <p>{{business.email }}</p>
-                <p>Location: {{business.biz_hood.name}}</p>
+                <p>Location: {{business.business_hood.name}}</p>
                 <p>Owner:<a style="width:100%; padding-left:10px;" href="{% url 'user_profile' username=business.biz_owner.username %}">
 
-                        <label>{{business.biz_owner.username}}</label></a> </p>
+                        <label>{{business.business_owner.username}}</label></a> </p>
             </div>
         </div>
 
@@ -43,7 +43,7 @@
 
         {% empty %}
         <div class="row">
-            <h2 id="text" class="text-center">There are no businesses here</h2>
+            <h2 id="text" class="text-center">No businesses here!</h2>
         </div>
 
         {% endfor %}

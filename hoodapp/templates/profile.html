@@ -48,13 +48,13 @@
             <h5>{{business.name | upper}}</h5>
             <h5>{{business.description | safe}}</h5>
             <p>{{business.email }}</p>
-            <p>Location: {{business.biz_hood.name}}</p>
+            <p>Location: {{business.business_hood.name}}</p>
           </div>
         </div>
         {% empty %}
         <div class="row">
           <h4>There are no businesses by {{user.username}}
-            Register one <a style="color:#4fc3f7;" href="{% url 'add_biz'  %}">here</a>
+            Register one <a style="color:#4fc3f7;" href="{% url 'add_business'  %}">here</a>
           </h4>
         </div>
         {% endfor %}

@@ -35,10 +35,10 @@
         <div class="row">
 
             <div class="col-md-3">
-                <a href="{% url 'add_biz'  %}" class="btn btn-sm btn-success">Add Business</a>
+                <a href="{% url 'add_business'  %}" class="btn btn-sm btn-success">Add Business</a>
 
                 <a href="{% url 'add_post'  %}" class="btn btn-sm btn-success">Add Post</a>
-                <a href="{% url 'leave_hood' hood.id  %}" class="btn btn-sm btn-danger">Leave Hood</a>
+                <a href="{% url 'exit_hood' hood.id  %}" class="btn btn-sm btn-danger">Exit Hood</a>
             </div>
             <div class="col-md-6">
 
@@ -57,7 +57,7 @@
                     </div>
 
                     {% empty %}
-                    <h4>No businesses yet! Register one <a style="color:#4fc3f7;" href="{% url 'add_biz'  %}">here</a></h4>
+                    <h4>No businesses! Register one <a style="color:#4fc3f7;" href="{% url 'add_business'  %}">here</a></h4>
 
                     {% endfor %}
 
@@ -80,7 +80,7 @@
                 {% empty %}
                 <h4>No posts :-(
                     <br>
-                    <a style="color:#4fc3f7;" href="{% url 'add_post'  %}">Create one!</a></h4>
+                    <a style="color:#4fc3f7;" href="{% url 'add_post'  %}">Create one now!</a></h4>
 
                 {% endfor %}
 

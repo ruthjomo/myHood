@@ -56,11 +56,11 @@ def add_hood(request):
 
     else:
         form = AddHoodForm()
-    return render(request, 'add_hood.html', {"form": form})
+    return render(request, 'new_hood.html', {"form": form})
 
 
 @login_required(login_url='/accounts/login/')
-def add_biz(request):
+def add_business(request):
     current_user = request.user
     if request.method == 'POST':
         form = AddBizForm(request.POST, request.FILES)
@@ -73,7 +73,7 @@ def add_biz(request):
 
     else:
         form = AddBizForm()
-    return render(request, 'add_biz.html', {"form": form})
+    return render(request, 'new_business.html', {"form": form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -129,7 +129,7 @@ def add_post(request):
 
     else:
         form = AddPostForm()
-    return render(request, 'add_post.html', {"form": form})
+    return render(request, 'new_post.html', {"form": form})
 
 # def view_biz(request, biz_hood):
 #     current_user = request.user
