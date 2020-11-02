@@ -7,7 +7,7 @@
     body {margin:0;}
     .navbar {
       overflow: hidden;
-      background-color:lightskyblue;
+      background-color:black;
       position: fixed;
       top: 0;
       width: 100%;
@@ -37,18 +37,18 @@
 
 
 
-  <div class="navbar navbar-dark bg-light fixed-top">
+  <div class="navbar navbar-dark bg-dark fixed-top">
     <a href="{% url 'home' %}"> Home</a>
     <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
       <input class="form-control mr-sm-2" type="search" placeholder="Search businesses . . ." aria-label="Search" name="business">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
     </form>
     <div class="bt-dropdown bt-menu-user" style="float:right;">
       <a href="{% url 'add_profile' %}" class="js-has-name text-black text-uppercase">{{user.username}}</a>
       <a href="{% url 'add_profile' %}" class="fa fa-user"></a>
       <a href="/logout">Logout</a>
        
-    </div>
+    
 
         <!-- Page Content -->
         <!-- <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>

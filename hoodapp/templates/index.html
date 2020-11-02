@@ -30,7 +30,8 @@
     <h4>Don't see your hood ?
       Register it <a style="color:#4fc3f7;" href="{% url 'add_hood'  %}">here</a>
     </h4>
-    <div class="card">
+    
+    <div class="card row">
       {% for hood in hoods%}
 
       <div class="card border-info">
@@ -47,10 +48,12 @@
 
           <!--<p class="card-text">{{post.description | safe}}</p>-->
           <a href="{% url 'join_hood' hood.id  %}" class="btn btn-sm btn-info">Join</a>
+          <a href="{% url 
         </div>
-      </div>
+      
       {% endfor %}
 
+    </div>
     </div>
 
 
