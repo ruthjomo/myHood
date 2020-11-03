@@ -9,7 +9,7 @@
 <html lang="en">
 
 <head>
-  <!-- <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet"> -->
+
 
   <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
 
@@ -45,9 +45,9 @@
           <h5 id="text" class="card-title">Residents: {{hood.occupants_count | upper}}</h5>
 
 
-          <!--<p class="card-text">{{post.description | safe}}</p>-->
+         
           <a href="{% url 'join_hood' hood.id  %}" class="btn btn-sm btn-info">Join</a>
-          <a href="{% url 'delete_hood' hood.id  %}" class="btn btn-sm btn-danger">Delete</a>
+          
 
         </div>
       </div>
