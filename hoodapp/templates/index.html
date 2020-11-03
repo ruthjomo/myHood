@@ -9,9 +9,9 @@
 <html lang="en">
 
 <head>
-  <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet"> -->
 
-  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
     crossorigin="anonymous">
@@ -28,32 +28,31 @@
   <div class="container-fluid">
     <h1 id="mainheading" style="text-align:center;" class="display-4"> MyHood</h1>
     <h4>Don't see your hood ?
-      Register it <a style="color:#4fc3f7;" href="{% url 'add_hood'  %}">here</a>
+      Register it <a style="color:info;" href="{% url 'add_hood'  %}">here</a>
     </h4>
-    
-    <div class="card row">
+    <div class="card-columns">
       {% for hood in hoods%}
 
-      <div class="card border-info">
+      <div class="card border-white">
 
 
-        <div class="card-body" style="background-color:#1111;">
+        <div class="card-body" style="background-color:whitesmoke;">
 
 
           <h4 id="text" class="card-title">Hood: {{hood.name }}</h4>
           <h6 id="text" class="card-title">Location: {{hood.locality | upper}}</h6>
 
-          <h5 id="text" class="card-title">Occupants: {{hood.occupants_count | upper}}</h5>
+          <h5 id="text" class="card-title">Residents: {{hood.occupants_count | upper}}</h5>
 
 
           <!--<p class="card-text">{{post.description | safe}}</p>-->
           <a href="{% url 'join_hood' hood.id  %}" class="btn btn-sm btn-info">Join</a>
-          <a href="{% url 
+          <a href="{% url 'delete_hood' hood.id  %}" class="btn btn-sm btn-danger">Delete</a>
+
         </div>
-      
+      </div>
       {% endfor %}
 
-    </div>
     </div>
 
 

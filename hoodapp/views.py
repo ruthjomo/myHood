@@ -11,7 +11,7 @@ from django.shortcuts import render, redirect
 # from .email import *
 
 
-def homepage(request):
+def home(request):
     if request.user.is_authenticated:
         if Join.objects.filter(user_id=request.user).exists():
             hood = Neighborhood.objects.get(pk=request.user.join.hood_id.id)
@@ -101,6 +101,25 @@ def exit_hood(request, hood_id):
         Join.objects.get(user_id=request.user).delete()
         # messages.error(request, 'You have left this awesome neighborhood ;-(')
         return redirect('home')
+
+@login_required(login_url='/accounts/login/')
+def delete_hood(request, id): 
+    # dictionary for initial data with  
+    # field names as keys 
+    context ={} 
+  
+    # fetch the object related to passed id 
+    obj = get_object_or_404(GeeksModel, id = id) 
+  
+  
+    if request.method =="POST": 
+        # delete object 
+        obj.delete() 
+        # after deleting redirect to  
+        # home page 
+        return HttpResponseRedirect("/") 
+  
+    return render(request, "delete_hood.html", context) 
 
 
 @login_required(login_url='/accounts/login/')
