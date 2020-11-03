@@ -1,7 +1,7 @@
-### Aww
+### MyHood
 ### Ruth Jomo
 ### Description
-This application allows a user to post a project he/she has created and get it reviewed by his/her peers.
+This is a web application that allows users to be in the loop about everything happening in their neighborhood.
 
 ### Requirements
 This program requires python3.+ (and pip) installed. Once python is installed, install the folowing external libraries provided in the requirements.txt file using pip.
